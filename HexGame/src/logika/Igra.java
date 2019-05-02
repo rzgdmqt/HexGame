@@ -1,6 +1,5 @@
 package logika;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 public class Igra {
     public Plosca plosca;
     private Igralec kdo;
-    public int steviloPotez;
+    private int steviloPotez;
 
     public Igra(Igralec prvi) {
         this.plosca = new Plosca();
@@ -27,7 +26,8 @@ public class Igra {
         this.kdo = igra.kdo;
         this.steviloPotez = igra.steviloPotez;
     }
-
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    // TODO Na tem delu je treba popraviti victory chech za modrega
     /*
     Vrne true če za podanega igralca pot iz začetne točke obstaja, sicer vrne false. (BFS)
      */
@@ -51,7 +51,7 @@ public class Igra {
                 }
             }
             for (Tuple tocka : videni) {
-                if (igralec == Igralec.MODRI && tocka.getY() == Plosca.velikost - 1) return true;
+                if (igralec == Igralec.MODRI && tocka.getX() == Plosca.velikost - 1) return true;
                 if (igralec == Igralec.RDECI && tocka.getY() == Plosca.velikost - 1) return true;
             }
         }
@@ -63,24 +63,20 @@ public class Igra {
             if (obstajaPot(kdo == Igralec.MODRI ?
                             Igralec.RDECI : Igralec.MODRI,
                     kdo == Igralec.MODRI ?
-                            new Tuple(i, 0) : new Tuple(i, 0))
+                            new Tuple(i, 0) : new Tuple(0, i))
             ) return kdo == Igralec.MODRI ? Stanje.Z_RDECI : Stanje.Z_MODRI;
+        }
+        if (steviloPotez == Math.pow(Plosca.velikost, 2)) {
+            return Stanje.NEODLOCENO;
         }
         return kdo == Igralec.MODRI ? Stanje.NP_MODRI : Stanje.NP_RDECI;
     }
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     public boolean poteza(int x, int y) {
         if (plosca.postavi(kdo, x, y)) {
             kdo = kdo.nasprotnik();
             steviloPotez++;
-            //
-            for (Polje[] p: plosca.plosca) {
-                System.out.println(Arrays.toString(p));
-            }
-            for (int i = 0; i < Plosca.velikost; i++) {
-                System.out.println(obstajaPot(Igralec.RDECI, new Tuple(0, i)));
-            }
-            //
             return true;
         }
         return false;

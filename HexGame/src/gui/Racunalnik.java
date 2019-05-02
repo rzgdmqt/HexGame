@@ -12,7 +12,6 @@ public class Racunalnik extends Strateg {
 
     Racunalnik(GlavnoOkno okno, Igralec jaz) {
         this.okno = okno;
-
     }
 
     @Override
@@ -31,6 +30,5 @@ public class Racunalnik extends Strateg {
 
     @Override
     public void klik(int i, int j) {
-
     }
 }

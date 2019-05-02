@@ -34,7 +34,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
      */
     private double dolzinaStranice() {
         double dolzinaX = getWidth() * 0.8 / (Math.sqrt(3) * (Plosca.velikost + Plosca.velikost / 2.0));
-        double dolzinaY = getHeight() * 0.8 / ((Plosca.velikost + Plosca.velikost % 2 + Plosca.velikost / 2.0));
+        double dolzinaY = getHeight() * 0.8 / (Plosca.velikost + (Plosca.velikost / 2.0));
         return Math.min(dolzinaX, dolzinaY);
     }
 
@@ -43,7 +43,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     }
 
     /*
-    (x, y) je središče šestkotnika, on funkcija določi oglišča šestkotnika
+    (x, y) je središče šestkotnika, funkcija določi oglišča šestkotnika
     tako, da shrani x koordinate v svoj array in y koordinate v svoj array
     oba arraya sta v arrayu "pomozna".
      */
@@ -88,7 +88,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         double[] koordinati = new double[2];
         koordinati[0] = (getWidth() - (Plosca.velikost + Plosca.velikost / 2.0) * d * Math.sqrt(3)) / 2.0 +
                 d * Math.sqrt(3) / 2 + x * zamakniX + zamakniVrsto;
-        koordinati[1] = getHeight() - (getHeight() - (Plosca.velikost + Plosca.velikost % 2 + Plosca.velikost / 2.0) * d)
+        koordinati[1] = getHeight() - (getHeight() - (Plosca.velikost + Plosca.velikost / 2.0) * d)
                 / 2.0 - d - y * zamakniY;
         return koordinati;
     }
@@ -120,13 +120,13 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         for(int i = 0; i < Plosca.velikost; i++) {
             double[] tockaSpodaj = zamakni(i, 0);
             double[] tockaZgoraj = zamakni(i, Plosca.velikost - 1);
-            int[][] ogl2= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
-            int[][] ogl1= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
+            int[][] spodaj= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
+            int[][] zgoraj= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
             g2.setColor(Color.BLUE);
-            g2.drawLine(ogl1[0][2], ogl1[1][2], ogl1[0][3], ogl1[1][3]);
-            g2.drawLine(ogl1[0][3], ogl1[1][3], ogl1[0][4], ogl1[1][4]);
-            g2.drawLine(ogl2[0][5], ogl2[1][5], ogl2[0][0], ogl2[1][0]);
-            g2.drawLine(ogl2[0][0], ogl2[1][0], ogl2[0][1], ogl2[1][1]);
+            g2.drawLine(zgoraj[0][2], zgoraj[1][2], zgoraj[0][3], zgoraj[1][3]);
+            g2.drawLine(zgoraj[0][3], zgoraj[1][3], zgoraj[0][4], zgoraj[1][4]);
+            g2.drawLine(spodaj[0][5], spodaj[1][5], spodaj[0][0], spodaj[1][0]);
+            g2.drawLine(spodaj[0][0], spodaj[1][0], spodaj[0][1], spodaj[1][1]);
         }
 
         /*
@@ -135,13 +135,13 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         for(int i = 0; i < Plosca.velikost; i++) {
             double[] tockaSpodaj = zamakni(0, i);
             double[] tockaZgoraj = zamakni(Plosca.velikost - 1, i);
-            int[][] ogl2= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
-            int[][] ogl1= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
+            int[][] spodaj= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
+            int[][] zgoraj= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
             g2.setColor(Color.RED);
-            g2.drawLine(ogl1[0][0], ogl1[1][0], ogl1[0][1], ogl1[1][1]);
-            g2.drawLine(ogl1[0][2], ogl1[1][2], ogl1[0][1], ogl1[1][1]);
-            g2.drawLine(ogl2[0][3], ogl2[1][3], ogl2[0][4], ogl2[1][4]);
-            g2.drawLine(ogl2[0][5], ogl2[1][5], ogl2[0][4], ogl2[1][4]);
+            g2.drawLine(zgoraj[0][0], zgoraj[1][0], zgoraj[0][1], zgoraj[1][1]);
+            g2.drawLine(zgoraj[0][2], zgoraj[1][2], zgoraj[0][1], zgoraj[1][1]);
+            g2.drawLine(spodaj[0][3], spodaj[1][3], spodaj[0][4], spodaj[1][4]);
+            g2.drawLine(spodaj[0][5], spodaj[1][5], spodaj[0][4], spodaj[1][4]);
         }
 
         /*

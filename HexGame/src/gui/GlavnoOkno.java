@@ -102,10 +102,9 @@ public class GlavnoOkno extends JFrame implements ActionListener {
                 status.setText("Zmagal je modri.");
             } else if (stanje == Stanje.Z_RDECI) {
                 status.setText("Zmagal je rdeči.");
+            } else if (stanje == Stanje.NEODLOCENO) {
+                status.setText("Neodločen izid.");
             }
-        }
-        if (igra.steviloPotez == (int) Math.pow(Plosca.velikost, 2)) {
-            status.setText("Neodločen izid.");
         }
         polje.repaint();
     }
@@ -114,25 +113,33 @@ public class GlavnoOkno extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == clovekRacunalnik){
-            if (Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
             }
         }
         else if (e.getSource() == racunalnikClovek) {
-            if (Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
                 novaIgra( new Clovek(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         }
         else if (e.getSource() == racunalnikRacunalnik) {
-            if (Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         }
         else if (e.getSource() == clovekClovek) {
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
         } else if(e.getSource() == velikostPlosce) {
-            String n = JOptionPane.showInputDialog("Velikost plošče (manjše od 11):");
-            Plosca.velikost = Integer.parseInt(n);
+            String n = JOptionPane.showInputDialog("Velikost plošče (3 - 20):");
+            int m;
+            try {
+                m = Integer.parseInt(n);
+            } catch (Exception E) {
+                m = Plosca.velikost;
+            }
+            if (m >= 2 && m <= 21) {
+                Plosca.velikost = m;
+            }
 
             this.polje = new IgralnoPolje(this);
             GridBagConstraints poljeLayout = new GridBagConstraints();
@@ -159,6 +166,8 @@ public class GlavnoOkno extends JFrame implements ActionListener {
                 rdec.klik(i, j);
             } else if (stanje == Stanje.NP_MODRI) {
                 moder.klik(i, j);
+            } else if (stanje == Stanje.Z_RDECI || stanje == Stanje.Z_MODRI) {
+                novaIgra(moder, rdec);
             }
         }
     }
