@@ -3,13 +3,14 @@ package gui;
 import logika.Igralec;
 import logika.Tuple;
 
-public class Clovek extends Strateg{
+public class Clovek extends Strateg {
     private GlavnoOkno okno;
 
     Clovek(GlavnoOkno okno, Igralec jaz) {
         this.okno = okno;
 
     }
+
     @Override
     public void naPotezi() {
 

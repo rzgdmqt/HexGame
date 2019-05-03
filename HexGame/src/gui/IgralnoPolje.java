@@ -117,11 +117,11 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         /*
         Narišemo začetno in končno linijo za modrega
          */
-        for(int i = 0; i < Plosca.velikost; i++) {
+        for (int i = 0; i < Plosca.velikost; i++) {
             double[] tockaSpodaj = zamakni(i, 0);
             double[] tockaZgoraj = zamakni(i, Plosca.velikost - 1);
-            int[][] spodaj= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
-            int[][] zgoraj= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
+            int[][] spodaj = ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
+            int[][] zgoraj = ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
             g2.setColor(Color.BLUE);
             g2.drawLine(zgoraj[0][2], zgoraj[1][2], zgoraj[0][3], zgoraj[1][3]);
             g2.drawLine(zgoraj[0][3], zgoraj[1][3], zgoraj[0][4], zgoraj[1][4]);
@@ -132,11 +132,11 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         /*
         Narišemo začetno in končno linijo za rdečega
          */
-        for(int i = 0; i < Plosca.velikost; i++) {
+        for (int i = 0; i < Plosca.velikost; i++) {
             double[] tockaSpodaj = zamakni(0, i);
             double[] tockaZgoraj = zamakni(Plosca.velikost - 1, i);
-            int[][] spodaj= ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
-            int[][] zgoraj= ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
+            int[][] spodaj = ogliscaSestkotnika(tockaSpodaj[0], tockaSpodaj[1], false);
+            int[][] zgoraj = ogliscaSestkotnika(tockaZgoraj[0], tockaZgoraj[1], false);
             g2.setColor(Color.RED);
             g2.drawLine(zgoraj[0][0], zgoraj[1][0], zgoraj[0][1], zgoraj[1][1]);
             g2.drawLine(zgoraj[0][2], zgoraj[1][2], zgoraj[0][1], zgoraj[1][1]);
@@ -166,7 +166,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     Kvadrat evklidske razdalje.
      */
     private int evklidska(Tuple a, Tuple b) {
-        return (int) (Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY()- b.getY(), 2));
+        return (int) (Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
     }
 
     /*

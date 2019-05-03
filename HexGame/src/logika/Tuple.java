@@ -1,6 +1,6 @@
 package logika;
 
-public class Tuple{
+public class Tuple {
     private int x;
     private int y;
 
@@ -21,6 +21,7 @@ public class Tuple{
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,6 @@
 package logika;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +10,7 @@ public class Igra {
     private Igralec kdo;
     private int steviloPotez;
 
+    // Konstruktor za igro
     public Igra(Igralec prvi) {
         this.plosca = new Plosca();
         this.plosca.init();
@@ -16,6 +18,7 @@ public class Igra {
         this.steviloPotez = 0;
     }
 
+    // Konstruktor za kopijo trenutne igre
     public Igra(Igra igra) {
         this.plosca = new Plosca();
         for (int i = 0; i < Plosca.velikost; i++) {
@@ -26,8 +29,7 @@ public class Igra {
         this.kdo = igra.kdo;
         this.steviloPotez = igra.steviloPotez;
     }
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    // TODO Na tem delu je treba popraviti victory chech za modrega
+
     /*
     Vrne true če za podanega igralca pot iz začetne točke obstaja, sicer vrne false. (BFS)
      */
@@ -58,6 +60,7 @@ public class Igra {
         return false;
     }
 
+    // Zmaga, Poraz, Ali kdo je na potezi
     public Stanje stanje() {
         for (int i = 0; i < Plosca.velikost; i++) {
             if (obstajaPot(kdo == Igralec.MODRI ?
@@ -71,17 +74,21 @@ public class Igra {
         }
         return kdo == Igralec.MODRI ? Stanje.NP_MODRI : Stanje.NP_RDECI;
     }
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    // naredimo potezo na (x, y) polje
     public boolean poteza(int x, int y) {
         if (plosca.postavi(kdo, x, y)) {
             kdo = kdo.nasprotnik();
             steviloPotez++;
+            for (Polje[] p : plosca.plosca) {
+                System.out.println(Arrays.toString(p));
+            }
             return true;
         }
         return false;
     }
 
+    // Pridobimo seznam možnoh potez
     public List<Tuple> moznePoteze() {
         List<Tuple> moznosti = new LinkedList<>();
         for (int i = 0; i < Plosca.velikost; i++) {

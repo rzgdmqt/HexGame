@@ -8,4 +8,5 @@ public class HexGame {
         glavnoOkno.pack();
         glavnoOkno.setVisible(true);
     }
+
 }
