@@ -80,15 +80,15 @@ public class Igra {
         if (plosca.postavi(kdo, x, y)) {
             kdo = kdo.nasprotnik();
             steviloPotez++;
-            for (Polje[] p : plosca.plosca) {
-                System.out.println(Arrays.toString(p));
-            }
+//            for (Polje[] p : plosca.plosca) {  // za debuganje
+//                System.out.println(Arrays.toString(p));
+//            }
             return true;
         }
         return false;
     }
 
-    // Pridobimo seznam možnoh potez
+    // Pridobimo seznam možnih potez
     public List<Tuple> moznePoteze() {
         List<Tuple> moznosti = new LinkedList<>();
         for (int i = 0; i < Plosca.velikost; i++) {

@@ -112,28 +112,28 @@ public class GlavnoOkno extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == clovekRacunalnik) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
             }
         } else if (e.getSource() == racunalnikClovek) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
                 novaIgra(new Clovek(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         } else if (e.getSource() == racunalnikRacunalnik) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 10) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         } else if (e.getSource() == clovekClovek) {
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
         } else if (e.getSource() == velikostPlosce) {
-            String n = JOptionPane.showInputDialog("Velikost plošče (3 - 20):");
+            String n = JOptionPane.showInputDialog("Velikost plošče (4 - 20):");
             int m;
             try {
                 m = Integer.parseInt(n);
             } catch (Exception E) {
                 m = Plosca.velikost;
             }
-            if (m >= 2 && m <= 21) {
+            if (m > 3 && m < 21) {
                 Plosca.velikost = m;
             }
 

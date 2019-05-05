@@ -2,7 +2,6 @@ package gui;
 
 import logika.Plosca;
 import logika.Polje;
-import logika.Tuple;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,14 +13,14 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     private GlavnoOkno okno;
 
     private final static double LINE_WIDTH = 2;
-    private Tuple[][] sredisca;
+    private double[][][] sredisca;
 
     IgralnoPolje(GlavnoOkno okno) {
         super();
         setBackground(Color.WHITE);
         this.okno = okno;
         this.addMouseListener(this);
-        this.sredisca = new Tuple[200][200];
+        this.sredisca = new double[200][200][2];
     }
 
     @Override
@@ -108,7 +107,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
             for (int j = 0; j < Plosca.velikost; j++) {
                 double[] tocka = zamakni(i, j);
                 int[][] tocke = ogliscaSestkotnika(tocka[0], tocka[1], false);
-                sredisca[i][j] = new Tuple(round(tocka[0]), round(tocka[1]));
+                sredisca[i][j] = new double[] {round(tocka[0]), round(tocka[1])};
 
                 g2.drawPolygon(tocke[0], tocke[1], 6);
             }
@@ -165,8 +164,8 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     /*
     Kvadrat evklidske razdalje.
      */
-    private int evklidska(Tuple a, Tuple b) {
-        return (int) (Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
+    private int evklidska(double[] a, double[] b) {
+        return (int) (Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
     }
 
     /*
@@ -182,10 +181,10 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         int izbY = 0;
         for (int i = 0; i < Plosca.velikost; i++) {
             for (int j = 0; j < Plosca.velikost; j++) {
-                if (evklidska((sredisca[i][j]), new Tuple(x, y)) < minRazdalja) {
+                if (evklidska((sredisca[i][j]), new double[] {x, y}) < minRazdalja) {
                     izbX = j;
                     izbY = i;
-                    minRazdalja = evklidska(sredisca[i][j], new Tuple(x, y));
+                    minRazdalja = evklidska(sredisca[i][j], new double[] {x, y});
                 }
             }
         }
