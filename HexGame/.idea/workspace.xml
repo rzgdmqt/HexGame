@@ -2,16 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57430fd9-35c0-481a-8b72-14134e982a18" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inteligenca/Minimax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inteligenca/OcenjenaPoteza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/Clovek.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/gui/Clovek.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/Clovek.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/GlavnoOkno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/gui/GlavnoOkno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/IgralnoPolje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/gui/IgralnoPolje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/Racunalnik.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/Strateg.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Igra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Igra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Igralec.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Igralec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Plosca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Plosca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Stanje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Stanje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Clovek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logika/Clovek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/GlavnoOkno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GlavnoOkno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/IgralnoPolje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/IgralnoPolje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Racunalnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logika/Racunalnik.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Strateg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logika/Strateg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logika/Igra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logika/Igra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Stanje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logika/Stanje.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logika/Igra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
+            <state relative-caret-position="384">
+              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,13 +44,31 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/IgralnoPolje.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/inteligenca/Minimax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="288">
+              <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/GlavnoOkno.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3528">
+              <caret line="147" column="28" lean-forward="true" selection-start-line="147" selection-start-column="28" selection-end-line="147" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5472#5473#0" expanded="true" />
+                <element signature="e#5537#5538#0" expanded="true" />
+                <element signature="e#6353#6354#0" expanded="true" />
+                <element signature="e#6390#6391#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,10 +79,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>kopijaIgr</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -67,7 +97,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/logika/Polje.java" />
         <option value="$PROJECT_DIR$/src/gui/Racunalnik.java" />
-        <option value="$PROJECT_DIR$/src/logika/Stanje.java" />
         <option value="$PROJECT_DIR$/src/HexGame.java" />
         <option value="$PROJECT_DIR$/src/gui/Clovek.java" />
         <option value="$PROJECT_DIR$/src/gui/Strateg.java" />
@@ -75,16 +104,23 @@
         <option value="$PROJECT_DIR$/src/logika/Plosca.java" />
         <option value="$PROJECT_DIR$/src/logika/Tuple.java" />
         <option value="$PROJECT_DIR$/src/gui/IgralnoPolje.java" />
-        <option value="$PROJECT_DIR$/src/gui/GlavnoOkno.java" />
         <option value="$PROJECT_DIR$/src/inteligenca/Nakljucno.java" />
+        <option value="$PROJECT_DIR$/src/logika/Clovek.java" />
+        <option value="$PROJECT_DIR$/src/logika/Strateg.java" />
+        <option value="$PROJECT_DIR$/src/logika/Racunalnik.java" />
+        <option value="$PROJECT_DIR$/src/inteligenca/OcenjenaPoteza.java" />
+        <option value="$PROJECT_DIR$/src/inteligenca/Kvaliteta.java" />
+        <option value="$PROJECT_DIR$/src/logika/Stanje.java" />
+        <option value="$PROJECT_DIR$/src/gui/GlavnoOkno.java" />
         <option value="$PROJECT_DIR$/src/logika/Igra.java" />
+        <option value="$PROJECT_DIR$/src/inteligenca/Minimax.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
+    <option name="x" value="70" />
     <option name="y" value="27" />
-    <option name="width" value="927" />
+    <option name="width" value="925" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -93,6 +129,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,8 +165,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -189,14 +225,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556878698171</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="uporaba double[] namesto Tuple.">
+      <created>1557071776701</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557071776701</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
+    <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11621472" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12694013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -205,7 +248,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34133044" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34133044" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -227,7 +270,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Popravil nastavitev velikosti, dodal neodločen izid" />
     <MESSAGE value="Odpravljen bug za prepoznavanje zmage. &#10;Komentiranje kode." />
-    <option name="LAST_COMMIT_MESSAGE" value="Odpravljen bug za prepoznavanje zmage. &#10;Komentiranje kode." />
+    <MESSAGE value="uporaba double[] namesto Tuple." />
+    <option name="LAST_COMMIT_MESSAGE" value="uporaba double[] namesto Tuple." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/HashSet.class">
@@ -266,24 +310,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Strateg.java">
+    <entry file="file://$PROJECT_DIR$/src/inteligenca/Nakljucno.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="432">
+          <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logika/Igralec.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/IgralnoPolje.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        <state relative-caret-position="480">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logika/Plosca.java">
+    <entry file="file://$PROJECT_DIR$/HexGame.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Clovek.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+        <state relative-caret-position="24">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inteligenca/Kvaliteta.java" />
+    <entry file="file://$PROJECT_DIR$/src/inteligenca/OcenjenaPoteza.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HexGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Tuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Strateg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Stanje.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Racunalnik.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -297,88 +396,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logika/Stanje.java">
+    <entry file="file://$PROJECT_DIR$/src/logika/Plosca.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logika/Igralec.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HexGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logika/Tuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Clovek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GlavnoOkno.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-504">
-          <caret line="144" column="19" lean-forward="true" selection-start-line="144" selection-start-column="19" selection-end-line="144" selection-end-column="19" />
+        <state relative-caret-position="3528">
+          <caret line="147" column="28" lean-forward="true" selection-start-line="147" selection-start-column="28" selection-end-line="147" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Racunalnik.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#308#309#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/IgralnoPolje.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inteligenca/Nakljucno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#5472#5473#0" expanded="true" />
+            <element signature="e#5537#5538#0" expanded="true" />
+            <element signature="e#6353#6354#0" expanded="true" />
+            <element signature="e#6390#6391#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logika/Igra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
+        <state relative-caret-position="384">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inteligenca/Minimax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
           </folding>
         </state>
       </provider>

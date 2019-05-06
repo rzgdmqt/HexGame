@@ -1,4 +1,4 @@
-package gui;
+package logika;
 
 public abstract class Strateg {
     public abstract void naPotezi();

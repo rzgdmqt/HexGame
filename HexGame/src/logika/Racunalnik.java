@@ -1,8 +1,7 @@
-package gui;
+package logika;
 
+import gui.GlavnoOkno;
 import inteligenca.Nakljucno;
-import logika.Igralec;
-import logika.Tuple;
 
 import javax.swing.*;
 
@@ -10,7 +9,7 @@ public class Racunalnik extends Strateg {
     private GlavnoOkno okno;
     private SwingWorker<Tuple, Object> mislec;
 
-    Racunalnik(GlavnoOkno okno, Igralec jaz) {
+    public Racunalnik(GlavnoOkno okno, Igralec jaz) {
         this.okno = okno;
     }
 

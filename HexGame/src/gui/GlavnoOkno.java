@@ -101,11 +101,9 @@ public class GlavnoOkno extends JFrame implements ActionListener {
                 status.setText("Zmagal je modri.");
             } else if (stanje == Stanje.Z_RDECI) {
                 status.setText("Zmagal je rdeči.");
-            } else if (stanje == Stanje.NEODLOCENO) {
-                status.setText("Neodločen izid.");
             }
+            polje.repaint();
         }
-        polje.repaint();
     }
 
 
@@ -147,7 +145,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
             getContentPane().add(polje, poljeLayout);
 
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
-            status.setText("Igra človek proti človeku. Začne rdeči!");
+            status.setText("Začne rdeči!");
         }
     }
 

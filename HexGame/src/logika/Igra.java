@@ -1,6 +1,5 @@
 package logika;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.List;
 public class Igra {
     public Plosca plosca;
     private Igralec kdo;
+    private Tuple zadnjaPoteza;
     private int steviloPotez;
 
     // Konstruktor za igro
@@ -26,6 +26,7 @@ public class Igra {
                 this.plosca.plosca[j][i] = igra.plosca.plosca[j][i];
             }
         }
+        this.zadnjaPoteza = igra.zadnjaPoteza;
         this.kdo = igra.kdo;
         this.steviloPotez = igra.steviloPotez;
     }
@@ -36,6 +37,10 @@ public class Igra {
     private boolean obstajaPot(Igralec igralec, Tuple zacetek) {
         HashSet<Tuple> videni = new HashSet<>();
         List<Tuple> queue = new LinkedList<>();
+        boolean zacetekM = false;
+        boolean zacetekR = false;
+        boolean konecM = false;
+        boolean konecR = false;
         queue.add(zacetek);
         videni.add(zacetek);
         if (plosca.pridobiPolje(zacetek.getX(), zacetek.getY()) ==
@@ -53,24 +58,24 @@ public class Igra {
                 }
             }
             for (Tuple tocka : videni) {
-                if (igralec == Igralec.MODRI && tocka.getX() == Plosca.velikost - 1) return true;
-                if (igralec == Igralec.RDECI && tocka.getY() == Plosca.velikost - 1) return true;
+                if (igralec == Igralec.RDECI && tocka.getY() == Plosca.velikost - 1) konecR = true;
+                if (igralec == Igralec.RDECI && tocka.getY() == 0) zacetekR = true;
+                if (igralec == Igralec.MODRI && tocka.getX() == Plosca.velikost - 1) konecM = true;
+                if (igralec == Igralec.MODRI && tocka.getX() ==0) zacetekM = true;
             }
         }
-        return false;
+        return (zacetekM && konecM || zacetekR && konecR);
     }
 
     // Zmaga, Poraz, Ali kdo je na potezi
     public Stanje stanje() {
         for (int i = 0; i < Plosca.velikost; i++) {
             if (obstajaPot(kdo == Igralec.MODRI ?
-                            Igralec.RDECI : Igralec.MODRI,
-                    kdo == Igralec.MODRI ?
-                            new Tuple(i, 0) : new Tuple(0, i))
+                            Igralec.RDECI : Igralec.MODRI, (zadnjaPoteza == null ? new Tuple(0, 0) : zadnjaPoteza))
+// Če vsakič kontroliramo vse začetke
+//                    kdo == Igralec.MODRI
+//                            new Tuple(i, 0) : new Tuple(0, i))
             ) return kdo == Igralec.MODRI ? Stanje.Z_RDECI : Stanje.Z_MODRI;
-        }
-        if (steviloPotez == Math.pow(Plosca.velikost, 2)) {
-            return Stanje.NEODLOCENO;
         }
         return kdo == Igralec.MODRI ? Stanje.NP_MODRI : Stanje.NP_RDECI;
     }
@@ -78,6 +83,7 @@ public class Igra {
     // naredimo potezo na (x, y) polje
     public boolean poteza(int x, int y) {
         if (plosca.postavi(kdo, x, y)) {
+            this.zadnjaPoteza = new Tuple(x, y);
             kdo = kdo.nasprotnik();
             steviloPotez++;
 //            for (Polje[] p : plosca.plosca) {  // za debuganje

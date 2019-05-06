@@ -1,12 +1,11 @@
-package gui;
+package logika;
 
-import logika.Igralec;
-import logika.Tuple;
+import gui.GlavnoOkno;
 
 public class Clovek extends Strateg {
     private GlavnoOkno okno;
 
-    Clovek(GlavnoOkno okno, Igralec jaz) {
+    public Clovek(GlavnoOkno okno, Igralec jaz) {
         this.okno = okno;
 
     }
