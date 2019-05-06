@@ -37,19 +37,19 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         nastavitve.add(velikostPlosce);
         velikostPlosce.addActionListener(this);
 
-        clovekRacunalnik = new JMenuItem("človek – računalnik");
+        clovekRacunalnik = new JMenuItem("računalnik - človek");
         menu.add(clovekRacunalnik);
         clovekRacunalnik.addActionListener(this);
 
-        racunalnikClovek = new JMenuItem("računalnik – človek");
+        racunalnikClovek = new JMenuItem("človek - računalnik");
         menu.add(racunalnikClovek);
         racunalnikClovek.addActionListener(this);
 
-        racunalnikRacunalnik = new JMenuItem("računalnik – računalnik");
+        racunalnikRacunalnik = new JMenuItem("računalnik - računalnik");
         menu.add(racunalnikRacunalnik);
         racunalnikRacunalnik.addActionListener(this);
 
-        clovekClovek = new JMenuItem("človek – človek");
+        clovekClovek = new JMenuItem("človek - človek");
         menu.add(clovekClovek);
         clovekClovek.addActionListener(this);
 
@@ -70,13 +70,13 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         statusLayout.anchor = GridBagConstraints.CENTER;
         getContentPane().add(status, statusLayout);
 
-        novaIgra(new Racunalnik(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
+        novaIgra(new Clovek(this, Igralec.RDECI), new Racunalnik(this, Igralec.MODRI));
     }
 
     private void novaIgra(Strateg noviModer, Strateg noviRdec) {
         if (moder != null) moder.prekini();
         if (rdec != null) rdec.prekini();
-        this.igra = new Igra(Igralec.RDECI);
+        this.igra = new Igra(Igralec.MODRI);
         moder = noviModer;
         rdec = noviRdec;
         Stanje stanje = igra.stanje();
@@ -145,7 +145,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
             getContentPane().add(polje, poljeLayout);
 
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
-            status.setText("Začne rdeči!");
+            status.setText("Začne modri.");
         }
     }
 

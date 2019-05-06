@@ -12,7 +12,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
 
     private GlavnoOkno okno;
 
-    private final static double LINE_WIDTH = 2;
+    private final static double LINE_WIDTH = 3;
     private double[][][] sredisca;
 
     IgralnoPolje(GlavnoOkno okno) {
@@ -20,7 +20,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         setBackground(Color.WHITE);
         this.okno = okno;
         this.addMouseListener(this);
-        this.sredisca = new double[200][200][2];
+        this.sredisca = new double[20][20][2];
     }
 
     @Override
@@ -69,7 +69,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     /*
     Funkcija nariše šestkotnik in ga pobarva z želeno barvo.
      */
-    private void paint(Graphics2D g2, Color barva, double x, double y) {
+    private void pobarvaj(Graphics2D g2, Color barva, double x, double y) {
         int[][] tocke = ogliscaSestkotnika(x, y, true);
         g2.setColor(barva);
         g2.fillPolygon(tocke[0], tocke[1], 6);
@@ -152,9 +152,9 @@ public class IgralnoPolje extends JPanel implements MouseListener {
                 for (int j = 0; j < Plosca.velikost; j++) {
                     double[] tocka = zamakni(j, i);
                     if (plosca[i][j] == Polje.MODRO) {
-                        paint(g2, Color.BLUE, tocka[0], tocka[1]);
+                        pobarvaj(g2, Color.BLUE, tocka[0], tocka[1]);
                     } else if (plosca[i][j] == Polje.RDECE) {
-                        paint(g2, Color.RED, tocka[0], tocka[1]);
+                        pobarvaj(g2, Color.RED, tocka[0], tocka[1]);
                     }
                 }
             }
@@ -164,7 +164,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     /*
     Kvadrat evklidske razdalje.
      */
-    private int evklidska(double[] a, double[] b) {
+    private int evklidskaRazdalja(double[] a, double[] b) {
         return (int) (Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
     }
 
@@ -181,10 +181,10 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         int izbY = 0;
         for (int i = 0; i < Plosca.velikost; i++) {
             for (int j = 0; j < Plosca.velikost; j++) {
-                if (evklidska((sredisca[i][j]), new double[] {x, y}) < minRazdalja) {
+                if (evklidskaRazdalja((sredisca[i][j]), new double[] {x, y}) < minRazdalja) {
                     izbX = j;
                     izbY = i;
-                    minRazdalja = evklidska(sredisca[i][j], new double[] {x, y});
+                    minRazdalja = evklidskaRazdalja(sredisca[i][j], new double[] {x, y});
                 }
             }
         }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Igra {
     public Plosca plosca;
-    private Igralec kdo;
+    public Igralec kdo;
     private Tuple zadnjaPoteza;
     private int steviloPotez;
 
@@ -61,7 +61,7 @@ public class Igra {
                 if (igralec == Igralec.RDECI && tocka.getY() == Plosca.velikost - 1) konecR = true;
                 if (igralec == Igralec.RDECI && tocka.getY() == 0) zacetekR = true;
                 if (igralec == Igralec.MODRI && tocka.getX() == Plosca.velikost - 1) konecM = true;
-                if (igralec == Igralec.MODRI && tocka.getX() ==0) zacetekM = true;
+                if (igralec == Igralec.MODRI && tocka.getX() == 0) zacetekM = true;
             }
         }
         return (zacetekM && konecM || zacetekR && konecR);
@@ -69,14 +69,9 @@ public class Igra {
 
     // Zmaga, Poraz, Ali kdo je na potezi
     public Stanje stanje() {
-        for (int i = 0; i < Plosca.velikost; i++) {
-            if (obstajaPot(kdo == Igralec.MODRI ?
-                            Igralec.RDECI : Igralec.MODRI, (zadnjaPoteza == null ? new Tuple(0, 0) : zadnjaPoteza))
-// Če vsakič kontroliramo vse začetke
-//                    kdo == Igralec.MODRI
-//                            new Tuple(i, 0) : new Tuple(0, i))
-            ) return kdo == Igralec.MODRI ? Stanje.Z_RDECI : Stanje.Z_MODRI;
-        }
+        if (obstajaPot(kdo == Igralec.MODRI ?
+                Igralec.RDECI : Igralec.MODRI, (zadnjaPoteza == null ? new Tuple(0, 0) : zadnjaPoteza)))
+            return kdo == Igralec.MODRI ? Stanje.Z_RDECI : Stanje.Z_MODRI;
         return kdo == Igralec.MODRI ? Stanje.NP_MODRI : Stanje.NP_RDECI;
     }
 
