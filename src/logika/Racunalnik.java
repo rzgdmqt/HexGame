@@ -17,9 +17,9 @@ public class Racunalnik extends Strateg {
     @Override
     public void naPotezi() {
 //        če želimo minimax poteze:
-        mislec = new Pametno(okno);
+//        mislec = new Pametno(okno);
 //        če želimo nakjučne poteze:
-//        mislec = new Nakljucno(okno);
+        mislec = new Nakljucno(okno);
         mislec.execute();
     }
 
