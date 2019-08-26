@@ -1,8 +1,8 @@
 package logika;
 
 import gui.GlavnoOkno;
+import inteligenca.MonteCarlo;
 import inteligenca.Nakljucno;
-import inteligenca.Pametno;
 
 import javax.swing.*;
 
@@ -16,10 +16,7 @@ public class Racunalnik extends Strateg {
 
     @Override
     public void naPotezi() {
-//        če želimo minimax poteze:
-//        mislec = new Pametno(okno);
-//        če želimo nakjučne poteze:
-        mislec = new Nakljucno(okno);
+        mislec = new MonteCarlo(okno);
         mislec.execute();
     }
 

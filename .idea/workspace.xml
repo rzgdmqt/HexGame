@@ -4,7 +4,28 @@
     <list default="true" id="57430fd9-35c0-481a-8b72-14134e982a18" name="Default Changelist" comment="reorganizacija projekta, boljše preverjanje če obstaja pot (preverja le iz zadnje poteze)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/GlavnoOkno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/gui/GlavnoOkno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HexGame/gui/IgralnoPolje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/gui/IgralnoPolje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/inteligenca/Minimax.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/inteligenca/Nakljucno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/inteligenca/Nakljucno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/inteligenca/OcenjenaPoteza.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/inteligenca/Pametno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Igra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Igra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Igralec.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Igralec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Plosca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Plosca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HexGame/logika/Racunalnik.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HexGame/logika/Racunalnik.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GlavnoOkno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GlavnoOkno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inteligenca/Minimax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inteligenca/Nakljucno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inteligenca/OcenjenaPoteza.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inteligenca/Pametno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Clovek.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Igra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Igralec.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Plosca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Polje.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Racunalnik.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Stanje.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Strateg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logika/Tuple.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +44,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>kopijaIgr</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -35,10 +51,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../koncnaVerzija" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/inteligenca" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -135,6 +157,25 @@
     <MESSAGE value="reorganizacija projekta, boljše preverjanje če obstaja pot (preverja le iz zadnje poteze)" />
     <MESSAGE value="komentiranje kode" />
     <option name="LAST_COMMIT_MESSAGE" value="komentiranje kode" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/gui/GlavnoOkno.java</url>
+          <line>84</line>
+          <properties class="gui.GlavnoOkno" method="novaIgra">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/gui/GlavnoOkno.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

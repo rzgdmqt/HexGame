@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Plosca {
-    public static int velikost = 7;
+    public static int velikost = 5;
     public Polje[][] plosca;
 
     // Konstruktor, ki naredi novo ploščo

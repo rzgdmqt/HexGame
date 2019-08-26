@@ -5,7 +5,7 @@ public enum Igralec {
 
     // Zamenja igralca
     public Igralec nasprotnik() {
-        if (this == MODRI) return RDECI;
-        else return MODRI;
+    	
+    	return ((this == MODRI) ? RDECI : MODRI);
     }
 }

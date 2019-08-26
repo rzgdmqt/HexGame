@@ -158,6 +158,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
             getContentPane().add(polje, poljeLayout);
 
             // naredimo novo igro
+            Plosca.velikost = m;
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
             status.setText("Začne modri.");
         }

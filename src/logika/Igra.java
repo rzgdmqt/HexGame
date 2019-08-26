@@ -1,14 +1,16 @@
 package logika;
 
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Igra {
     public Plosca plosca;
     public Igralec kdo;
-    private Tuple zadnjaPoteza;
-    private int steviloPotez;
+    public Tuple zadnjaPoteza;
+    public int steviloPotez;
+    private MoveGenerator movGen; /* Move generator. */
+    private EqvClass eqvRdeci; /* Eqv classes for rdeci player. */
+    private EqvClass eqvModri; /* Eqv classes for modri player. */
+    private boolean original; /* For easier debug. */
 
     // Konstruktor za igro
     public Igra(Igralec prvi) {
@@ -16,6 +18,10 @@ public class Igra {
         this.plosca.init();
         this.kdo = prvi;
         this.steviloPotez = 0;
+        this.movGen = new MoveGenerator();
+        this.eqvRdeci = new EqvClass();
+        this.eqvModri = new EqvClass();
+        original = true;
     }
 
     // Konstruktor za kopijo trenutne igre
@@ -29,48 +35,23 @@ public class Igra {
         this.zadnjaPoteza = igra.zadnjaPoteza;
         this.kdo = igra.kdo;
         this.steviloPotez = igra.steviloPotez;
+        this.movGen = new MoveGenerator(igra.movGen);
+        this.eqvRdeci = new EqvClass(igra.eqvRdeci);
+        this.eqvModri = new EqvClass(igra.eqvModri);
+        original = false;
     }
 
-    /*
-    Vrne true če za podanega igralca pot iz začetne točke obstaja, sicer vrne false. (BFS)
-     */
-    private boolean obstajaPot(Igralec igralec, Tuple zacetek) {
-        HashSet<Tuple> videni = new HashSet<>();
-        List<Tuple> queue = new LinkedList<>();
-        boolean zacetekM = false;
-        boolean zacetekR = false;
-        boolean konecM = false;
-        boolean konecR = false;
-        queue.add(zacetek);
-        videni.add(zacetek);
-        if (plosca.pridobiPolje(zacetek.getX(), zacetek.getY()) ==
-                (igralec == Igralec.MODRI ? Polje.MODRO : Polje.RDECE)) {
-            while (!queue.isEmpty()) {
-                Tuple trenutna = queue.get(0);
-                queue.remove(0);
-                for (Tuple tocka : plosca.pridobiSosede(trenutna.getX(), trenutna.getY())) {
-                    if (!videni.contains(tocka) &&
-                            plosca.pridobiPolje(tocka.getX(), tocka.getY()) ==
-                                    (igralec == Igralec.MODRI ? Polje.MODRO : Polje.RDECE)) {
-                        queue.add(tocka);
-                        videni.add(tocka);
-                    }
-                }
-            }
-            for (Tuple tocka : videni) {
-                if (igralec == Igralec.RDECI && tocka.getY() == Plosca.velikost - 1) konecR = true;
-                if (igralec == Igralec.RDECI && tocka.getY() == 0) zacetekR = true;
-                if (igralec == Igralec.MODRI && tocka.getX() == Plosca.velikost - 1) konecM = true;
-                if (igralec == Igralec.MODRI && tocka.getX() == 0) zacetekM = true;
-            }
-        }
-        return (zacetekM && konecM || zacetekR && konecR);
+    /* Tests if path connects igralec's edges.
+     * (Implemented through equivalence classes) */
+    public boolean obstajaPot(Igralec igralec) {
+    	EqvClass eqvC = (igralec == Igralec.MODRI) ? eqvModri : eqvRdeci;
+    	return eqvC.isWon((igralec == Igralec.MODRI) ? Polje.MODRO : Polje.RDECE, plosca);
     }
 
     // Zmaga, Poraz, Ali kdo je na potezi
-    public Stanje stanje() {
+    public Stanje stanje() {   	
         if (obstajaPot(kdo == Igralec.MODRI ?
-                Igralec.RDECI : Igralec.MODRI, (zadnjaPoteza == null ? new Tuple(0, 0) : zadnjaPoteza)))
+                Igralec.RDECI : Igralec.MODRI))
             return kdo == Igralec.MODRI ? Stanje.Z_RDECI : Stanje.Z_MODRI;
         return kdo == Igralec.MODRI ? Stanje.NP_MODRI : Stanje.NP_RDECI;
     }
@@ -79,24 +60,30 @@ public class Igra {
     public boolean poteza(int x, int y) {
         if (plosca.postavi(kdo, x, y)) {
             this.zadnjaPoteza = new Tuple(x, y);
-            kdo = kdo.nasprotnik();
+     
+            /* Insert move into Equivalence Class. */
+            EqvClass eqvC = (kdo == Igralec.MODRI) ? eqvModri : eqvRdeci;
+            eqvC.insert(new Tuple(x, y), plosca);
+            
+            /* Remove played move from available moves in MoveGenerator. */
+            movGen.remove(new Tuple(x, y));
+            
+            this.kdo = kdo.nasprotnik();
+            
             steviloPotez++;
-//            for (Polje[] p : plosca.plosca) {  // za debuganje
-//                System.out.println(Arrays.toString(p));
-//            }
             return true;
         }
         return false;
     }
+    
+    public List<Tuple> allMov() {
+    	/* Returns all legal moves. */
+    	return movGen.getAll();
+    }
 
-    // Pridobimo seznam možnih potez
-    public List<Tuple> moznePoteze() {
-        List<Tuple> moznosti = new LinkedList<>();
-        for (int i = 0; i < Plosca.velikost; i++) {
-            for (int j = 0; j < Plosca.velikost; j++) {
-                if (plosca.pridobiPolje(i, j) == Polje.PRAZNO) moznosti.add(new Tuple(i, j));
-            }
-        }
-        return moznosti;
+    public Tuple randMov() {
+    	/* Returns random legal move. */
+    	Tuple mov = movGen.getRandom();
+    	return mov;
     }
 }
