@@ -20,7 +20,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         setBackground(Color.WHITE);
         this.okno = okno;
         this.addMouseListener(this);
-        this.sredisca = new double[20][20][2];
+        this.sredisca = new double[11][11][2];
     }
 
     @Override
@@ -32,8 +32,11 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     Določi dolžino stranice šestkotnika.
      */
     private double dolzinaStranice() {
+        // pogledamo širino (* 0.8 zato, da ni čisto do roba, velikost + velikost/2 zato, ker je poševna)
         double dolzinaX = getWidth() * 0.8 / (Math.sqrt(3) * (Plosca.velikost + Plosca.velikost / 2.0));
+        // velikost / 2 zato ker imajo šestkotniki "kapco"
         double dolzinaY = getHeight() * 0.8 / (Plosca.velikost + (Plosca.velikost / 2.0));
+        // vzamemo manjšo od dolžin
         return Math.min(dolzinaX, dolzinaY);
     }
 
@@ -44,13 +47,16 @@ public class IgralnoPolje extends JPanel implements MouseListener {
     /*
     (x, y) je središče šestkotnika, funkcija določi oglišča šestkotnika
     tako, da shrani x koordinate v svoj array in y koordinate v svoj array
-    oba arraya sta v arrayu "pomozna".
+    oba arraya sta v arrayu "pomozna" (zato, ker Graphics2D g2.fillPolygon
+    zahteva x-e in y-e v ločenih arrayih).
      */
     private int[][] ogliscaSestkotnika(double x, double y, boolean polnilo) {
         double d;
+        // če je polnilo do roba je grdo
         if (polnilo) d = dolzinaStranice() * 0.9;
         else d = dolzinaStranice();
         int[][] pomozna = new int[2][6];
+        // prvo oglišče je spodaj na sredini, ostala so nanizana v pozitivni smeri
         pomozna[0][0] = round(x);
         pomozna[1][0] = round(y + d);
         pomozna[0][1] = round(x + (Math.sqrt(3) / 2) * d);
@@ -80,10 +86,11 @@ public class IgralnoPolje extends JPanel implements MouseListener {
      */
     private double[] zamakni(int x, int y) {
         double d = dolzinaStranice();
-        double zamakniX = d * Math.sqrt(3); // / 2.0 * 2
-        double zamakniY = d * 1.5;
+        double zamakniX = d * Math.sqrt(3); // premakne v šestkotnik na desni
+        double zamakniY = d * 1.5; // premakne v šestkotnik spodaj
         double zamakniVrsto = y * Math.sqrt(3) / 2 * d; // zamik posamezne vrste
 
+        // preračunamo, kje naslednje središče
         double[] koordinati = new double[2];
         koordinati[0] = (getWidth() - (Plosca.velikost + Plosca.velikost / 2.0) * d * Math.sqrt(3)) / 2.0 +
                 d * Math.sqrt(3) / 2 + x * zamakniX + zamakniVrsto;
@@ -99,7 +106,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
 
         /*
         Narišemo šestkotnike.
-         */
+        */
         g2.setColor(Color.BLACK);
         g2.setStroke(new BasicStroke((float) LINE_WIDTH));
 
@@ -107,7 +114,7 @@ public class IgralnoPolje extends JPanel implements MouseListener {
             for (int j = 0; j < Plosca.velikost; j++) {
                 double[] tocka = zamakni(i, j);
                 int[][] tocke = ogliscaSestkotnika(tocka[0], tocka[1], false);
-                sredisca[i][j] = new double[] {round(tocka[0]), round(tocka[1])};
+                sredisca[i][j] = new double[]{round(tocka[0]), round(tocka[1])};
 
                 g2.drawPolygon(tocke[0], tocke[1], 6);
             }
@@ -181,14 +188,14 @@ public class IgralnoPolje extends JPanel implements MouseListener {
         int izbY = 0;
         for (int i = 0; i < Plosca.velikost; i++) {
             for (int j = 0; j < Plosca.velikost; j++) {
-                if (evklidskaRazdalja((sredisca[i][j]), new double[] {x, y}) < minRazdalja) {
+                if (evklidskaRazdalja((sredisca[i][j]), new double[]{x, y}) < minRazdalja) {
                     izbX = j;
                     izbY = i;
-                    minRazdalja = evklidskaRazdalja(sredisca[i][j], new double[] {x, y});
+                    minRazdalja = evklidskaRazdalja(sredisca[i][j], new double[]{x, y});
                 }
             }
         }
-        if (Math.sqrt(minRazdalja) < dolzinaStranice()) {
+        if (Math.sqrt(minRazdalja) < dolzinaStranice()) {  // če je klik preveč izven igralne plošče, ga ignoriramo
             okno.klikniPolje(izbX, izbY);
         }
     }
