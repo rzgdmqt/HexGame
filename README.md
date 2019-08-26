@@ -1,2 +1,3 @@
 # HexGame
-Projekt pri predmetu PROG2
+### Projekt pri predmetu PROG2
+Matija Sirk, Gašper Žajdela
