@@ -1,5 +1,7 @@
 package gui;
 
+// uvozimo vse potrebne knjižnice
+
 import logika.*;
 
 import javax.swing.*;
@@ -26,6 +28,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new GridBagLayout());
 
+        // naredimo "menu bar" z opcijo igra in nastavitve
         JMenuBar menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
         JMenu menu = new JMenu("Igra");
@@ -33,10 +36,12 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         JMenu nastavitve = new JMenu("Nastavitve");
         menuBar.add(nastavitve);
 
+        // dodamo nastavitev velikosti plošče
         velikostPlosce = new JMenuItem("velikost plošče");
         nastavitve.add(velikostPlosce);
         velikostPlosce.addActionListener(this);
 
+        // dodamo 4 različne načine igre
         clovekRacunalnik = new JMenuItem("računalnik - človek");
         menu.add(clovekRacunalnik);
         clovekRacunalnik.addActionListener(this);
@@ -53,6 +58,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         menu.add(clovekClovek);
         clovekClovek.addActionListener(this);
 
+        // zgoraj (tik pod menu bar) naredimo igralno polje
         polje = new IgralnoPolje(this);
         GridBagConstraints poljeLayout = new GridBagConstraints();
         poljeLayout.gridx = 0;
@@ -62,6 +68,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         poljeLayout.weighty = 1.0;
         getContentPane().add(polje, poljeLayout);
 
+        // spodaj pod igralno ploščo naredimo statusno vrstico
         status = new JLabel();
         status.setFont(new Font(status.getFont().getName(), status.getFont().getStyle(), 20));
         GridBagConstraints statusLayout = new GridBagConstraints();
@@ -70,28 +77,31 @@ public class GlavnoOkno extends JFrame implements ActionListener {
         statusLayout.anchor = GridBagConstraints.CENTER;
         getContentPane().add(status, statusLayout);
 
+        // naredimo/začnemo novo igro
         novaIgra(new Clovek(this, Igralec.RDECI), new Racunalnik(this, Igralec.MODRI));
     }
 
+
     private void novaIgra(Strateg noviModer, Strateg noviRdec) {
-        if (moder != null) moder.prekini();
-        if (rdec != null) rdec.prekini();
-        this.igra = new Igra(Igralec.MODRI);
-        moder = noviModer;
-        rdec = noviRdec;
-        Stanje stanje = igra.stanje();
+        if (moder != null) moder.prekini(); // če je moder v še v igri ga prekinemo
+        if (rdec != null) rdec.prekini();  // če je rdeč še v igri ga prekinemo
+        this.igra = new Igra(Igralec.MODRI); // naredimo novo igro, kjer začne modri
+        moder = noviModer;  // nastavimo modrega
+        rdec = noviRdec;  // nastavimo rdečega
+        Stanje stanje = igra.stanje();  // določimo stanje igre
+        // pogledamo kdo je na potezi, in izvedemo njegovo potezo
         if (stanje == Stanje.NP_MODRI) {
             moder.naPotezi();
         } else if (stanje == Stanje.NP_RDECI) {
             rdec.naPotezi();
         }
-        osveziPrikaz();
+        osveziPrikaz();  // po končani potezi izrišemo novo situacijo
     }
 
     private void osveziPrikaz() {
         if (igra == null) {
-            status.setText("");
-        } else {
+            status.setText("");  // če ni igre je status prazen string
+        } else {  // sicer določimo ustrezen status z ustreznim besedilom
             Stanje stanje = igra.stanje();
             if (stanje == Stanje.NP_MODRI) {
                 status.setText("Na potezi je modri.");
@@ -102,39 +112,42 @@ public class GlavnoOkno extends JFrame implements ActionListener {
             } else if (stanje == Stanje.Z_RDECI) {
                 status.setText("Zmagal je rdeči.");
             }
-            polje.repaint();
+            polje.repaint();  // na novo narišemo ploščo
         }
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        /* na podlagi izbrane igre naredimo novo igro, ki je velikosti med vključno 4 in 11,
+         saj sicer povzročimo preveč težav za AI. */
         if (e.getSource() == clovekRacunalnik) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 11) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
             }
         } else if (e.getSource() == racunalnikClovek) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 11) {
                 novaIgra(new Clovek(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         } else if (e.getSource() == racunalnikRacunalnik) {
-            if (4 <= Plosca.velikost && Plosca.velikost <= 20) {
+            if (4 <= Plosca.velikost && Plosca.velikost <= 11) {
                 novaIgra(new Racunalnik(this, Igralec.MODRI), new Racunalnik(this, Igralec.RDECI));
             }
         } else if (e.getSource() == clovekClovek) {
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
         } else if (e.getSource() == velikostPlosce) {
-            String n = JOptionPane.showInputDialog("Velikost plošče (4 - 20):");
+            String n = JOptionPane.showInputDialog("Velikost plošče (4 - 11):");
             int m;
-            try {
+            try {  // preverimo če je vneseno število
                 m = Integer.parseInt(n);
-            } catch (Exception E) {
+            } catch (Exception E) {  // sicer pustimo prejšnjo velikost
                 m = Plosca.velikost;
             }
-            if (m > 3 && m < 21) {
+            if (m > 3 && m < 12) {  // če je bilo vnešeno število, preverimo, ali je ustrezne velikosti
                 Plosca.velikost = m;
             }
 
+            // če spremenimo velikost plošče, naredimo novo igralno polje
             this.polje = new IgralnoPolje(this);
             GridBagConstraints poljeLayout = new GridBagConstraints();
             poljeLayout.gridx = 0;
@@ -144,23 +157,25 @@ public class GlavnoOkno extends JFrame implements ActionListener {
             poljeLayout.weighty = 1.0;
             getContentPane().add(polje, poljeLayout);
 
+            // naredimo novo igro
             novaIgra(new Clovek(this, Igralec.MODRI), new Clovek(this, Igralec.RDECI));
             status.setText("Začne modri.");
         }
     }
 
+    // pridobimo ploščo
     Polje[][] getPlosca() {
         return (igra == null ? null : igra.plosca.plosca);
     }
 
     void klikniPolje(int i, int j) {
-        if (igra != null) {
+        if (igra != null) { // ko kliknemo polje in igra obstaja, se zgodi "klik" za modrega ali rdečega
             Stanje stanje = igra.stanje();
             if (stanje == Stanje.NP_RDECI) {
                 rdec.klik(i, j);
             } else if (stanje == Stanje.NP_MODRI) {
                 moder.klik(i, j);
-            } else if (stanje == Stanje.Z_RDECI || stanje == Stanje.Z_MODRI) {
+            } else if (stanje == Stanje.Z_RDECI || stanje == Stanje.Z_MODRI) {  // če je kdo zmagal, naredimo novo igro
                 novaIgra(moder, rdec);
             }
         }
@@ -179,6 +194,7 @@ public class GlavnoOkno extends JFrame implements ActionListener {
     }
 
     public Igra kopijaIgre() {
+        // ustvari novo kopijo trenutne igre
         return new Igra(igra);
     }
 }
